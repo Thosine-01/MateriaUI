@@ -1,4 +1,4 @@
-import React from 'react'
+import React , {useState} from 'react'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -11,30 +11,43 @@ import BedroomParentIcon from '@mui/icons-material/BedroomParent';
 import HouseIcon from '@mui/icons-material/House';
 import BathroomIcon from '@mui/icons-material/Bathroom';
 import ContentPasteOffIcon from '@mui/icons-material/ContentPasteOff';
+import SwipeableViews from 'react-swipeable-views';
 
 
 const images = [
     {
       label: 'San Francisco – Oakland Bay Bridge, United States',
       imgPath:
-        'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=250&q=60',
+        'https://images.unsplash.com/photo-1537944434965-cf4679d1a598?auto=format&fit=crop&w=400&h=400&q=60',
+      imgName:undefined,
+      id:1
     },
     {
       label: 'Bird',
       imgPath:
-        'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=250&q=60',
+        'https://images.unsplash.com/photo-1538032746644-0212e812a9e7?auto=format&fit=crop&w=400&h=400&q=60',
+      imgName:'bedroom',
+      id:2
     },
     {
       label: 'Bali, Indonesia',
       imgPath:
-        'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=250',
+        'https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=400',
+      imgName:'kitchen',
+      id:3
     },
     {
       label: 'Goč, Serbia',
       imgPath:
-        'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=250&q=60',
-    },
+        'https://images.unsplash.com/photo-1512341689857-198e7e2f3ca8?auto=format&fit=crop&w=400&h=400&q=60',
+      imgName:'bathroom',
+      id:4
+      },
   ];
+
+  const imageNum = images.length
+
+  console.log(imageNum)
 
 export default function ImageCard() {
   return (
@@ -43,11 +56,35 @@ export default function ImageCard() {
       width:400,
       
     }}>
-        <CardMedia>
-            <img src='https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=400&h=400' alt=''/>
-            <Stack>
-                <Stack></Stack>
-            </Stack>
+        <CardMedia sx={{}}>
+          <SwipeableViews enableMouseEvents>
+            {images.map((imgdata) => (
+              <div style={{height:'100%', position:'relative'}}> 
+                  <img src={imgdata.imgPath} alt={imgdata.label}/>
+                  <div style={{
+                    position:'absolute',
+                    bottom:'30px',
+                    right:'40px',
+                    backgroundColor:'#070707',
+                    color:'#fff',
+                    padding:'10px 20px 10px 20px',
+                    borderRadius:'15px'
+                    }}>{imgdata.id}/{imageNum}</div>
+
+                    <div style={{
+                      position:'absolute',
+                      bottom:'30px',
+                      left:'40px',
+                      backgroundColor:'#070707',
+                      color:'#fff',
+                      padding:'10px 20px 10px 20px',
+                      borderRadius:'15px',
+                      fontSize:'15px',
+                      visibility: imgdata.imgName !== undefined? 'visible': 'hidden'
+                    }}>{imgdata.imgName}</div>
+              </div>
+            ))}
+          </SwipeableViews>
             
         </CardMedia>
     </Card>
