@@ -33,10 +33,11 @@ export default function HouseInfo() {
         <Typography variant='h5' sx={{fontWeight:'bold', marginBottom:2}}>WHat This House Offers</Typography>
         <Stack 
             sx={{
-            marginTop:3
+            marginTop:3,
+            alignItems:'center'
             }} direction='row'> 
             <IconButton aria-label="delete" size="small" sx={{fontSize:'30px', marginRight:3}}>
-                <BedroomParentIcon fontSize="inherit"/>
+                <WifiIcon fontSize="inherit"/>
             </IconButton>
             <Stack>
             <Typography variant='base2'>Free Wifi</Typography>
@@ -47,7 +48,7 @@ export default function HouseInfo() {
             marginTop:2
         }} direction='row'>
             <IconButton aria-label="delete" size="small" sx={{fontSize:'30px', marginRight:3}}>
-                <HouseIcon fontSize="inherit" />
+                <TungstenIcon fontSize="inherit" />
             </IconButton>
             <Stack>
             <Typography variant='base2'>24/7 hours</Typography>
@@ -55,7 +56,8 @@ export default function HouseInfo() {
         </Stack>
         <Stack
         sx={{
-            marginTop:2
+            marginTop:2,
+            alignItems:'center'
         }} direction='row'>
             <IconButton aria-label="delete" size="small" sx={{fontSize:'30px', marginRight:3}}>
                 <BathroomIcon fontSize="inherit" />
@@ -67,10 +69,11 @@ export default function HouseInfo() {
 
         <Stack
         sx={{
-            marginTop:2
+            marginTop:2,
+            alignItems:'center'
         }} direction='row'>
             <IconButton aria-label="delete" size="small" sx={{fontSize:'30px', marginRight:3}}>
-                <BathroomIcon fontSize="inherit" />
+                <CheckroomIcon fontSize="inherit" />
             </IconButton>
             <Stack>
             <Typography variant='base2'>Work Space</Typography>
@@ -79,7 +82,8 @@ export default function HouseInfo() {
 
         <Stack 
             sx={{
-            marginTop:2
+            marginTop:2,
+            alignItems:'center'
             }} direction='row'>
             <IconButton aria-label="delete" size="small" sx={{fontSize:'30px', marginRight:3}}>
                 <ContentPasteOffIcon fontSize="inherit" />
