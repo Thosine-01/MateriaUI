@@ -12,6 +12,15 @@ import HouseIcon from '@mui/icons-material/House';
 import BathroomIcon from '@mui/icons-material/Bathroom';
 import ContentPasteOffIcon from '@mui/icons-material/ContentPasteOff';
 import SwipeableViews from 'react-swipeable-views';
+import Box from '@mui/material/Box';
+import Tab from '@mui/material/Tab';
+import TabContext from '@mui/lab/TabContext';
+import TabList from '@mui/lab/TabList';
+import TabPanel from '@mui/lab/TabPanel';
+import Paper from '@mui/material/Paper';
+
+
+
 
 
 const images = [
@@ -50,6 +59,13 @@ const images = [
   console.log(imageNum)
 
 export default function ImageCard() {
+
+  const [value, setValue] = React.useState('1');
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+  
   return (
     <div>
     <Card sx={{
@@ -147,56 +163,87 @@ export default function ImageCard() {
       padding:4
     }}>
       <div style={{border:'0.0001em', borderBottom:'solid', marginTop:'30px', borderColor:'#666'}}></div>
-      
-      <Stack 
-      sx={{
-       marginTop:3
-      }} direction='row'> 
-        <IconButton aria-label="delete" size="small" sx={{fontSize:'30px', marginRight:3}}>
-            <BedroomParentIcon fontSize="inherit"/>
-        </IconButton>
-        <Stack>
-          <Typography variant='base2' sx={{fontWeight:'bold'}}>Room in a Rental Unit</Typography>
-          <Typography variant='base2'>Your own room in a home, plus access to shared space</Typography>
+    <Stack sx={{ width: '100%', typography: 'body1' }}>
+      <TabContext value={value}>
+        <Stack sx={{ borderBottom: 1, borderColor: 'divider', marginTop:'20px', }}>
+          <TabList onChange={handleChange} aria-label="lab API tabs example">
+            <Tab label="Item One" value="1"  sx={{fontSize:'18px'}}/>
+            <Tab label="Item Two" value="2" sx={{fontSize:'18px'}}/>
+            
+          </TabList>
         </Stack>
-      </Stack>
-      <Stack
-      sx={{
-        marginTop:3
-      }} direction='row'>
-        <IconButton aria-label="delete" size="small" sx={{fontSize:'30px', marginRight:3}}>
-            <HouseIcon fontSize="inherit" />
-        </IconButton>
-        <Stack>
-          <Typography  variant='base2' sx={{fontWeight:'bold'}}>Shared Common Space</Typography>
-          <Typography variant='base2'>You will share part of the home with other tenants</Typography>
-        </Stack>
-      </Stack>
-      <Stack
-      sx={{
-        marginTop:3
-      }} direction='row'>
-        <IconButton aria-label="delete" size="small" sx={{fontSize:'30px', marginRight:3}}>
-            <BathroomIcon fontSize="inherit" />
-        </IconButton>
-        <Stack>
-          <Typography  variant='base2' sx={{fontWeight:'bold'}}>Shared Bathroom</Typography>
-          <Typography variant='base2'>You will share the bathroom with others</Typography>
-        </Stack>
-      </Stack>
+        <TabPanel value="1">
+          <Stack 
+            sx={{
+            marginTop:3
+            }} direction='row'> 
+              <IconButton aria-label="delete" size="small" sx={{fontSize:'30px', marginRight:3}}>
+                  <BedroomParentIcon fontSize="inherit"/>
+              </IconButton>
+              <Stack>
+                <Typography variant='base2' sx={{fontWeight:'bold'}}>Room in a Rental Unit</Typography>
+                <Typography variant='base2'>Your own room in a home, plus access to shared space</Typography>
+              </Stack>
+            </Stack>
+            <Stack
+            sx={{
+              marginTop:3
+            }} direction='row'>
+              <IconButton aria-label="delete" size="small" sx={{fontSize:'30px', marginRight:3}}>
+                  <HouseIcon fontSize="inherit" />
+              </IconButton>
+              <Stack>
+                <Typography  variant='base2' sx={{fontWeight:'bold'}}>Shared Common Space</Typography>
+                <Typography variant='base2'>You will share part of the home with other tenants</Typography>
+              </Stack>
+            </Stack>
+            <Stack
+            sx={{
+              marginTop:3
+            }} direction='row'>
+              <IconButton aria-label="delete" size="small" sx={{fontSize:'30px', marginRight:3}}>
+                  <BathroomIcon fontSize="inherit" />
+              </IconButton>
+              <Stack>
+                <Typography  variant='base2' sx={{fontWeight:'bold'}}>Shared Bathroom</Typography>
+                <Typography variant='base2'>You will share the bathroom with others</Typography>
+              </Stack>
+            </Stack>
 
-      <Stack 
-        sx={{
-          marginTop:3
-        }} direction='row'>
-        <IconButton aria-label="delete" size="small" sx={{fontSize:'30px', marginRight:3}}>
-            <ContentPasteOffIcon fontSize="inherit" />
-        </IconButton>
-        <Stack>
-          <Typography  variant='base2' sx={{fontWeight:'bold'}}>Free cancellation before 2 weeks of rent</Typography>
-          
-        </Stack>
-      </Stack>
+            <Stack 
+              sx={{
+                marginTop:3
+              }} direction='row'>
+              <IconButton aria-label="delete" size="small" sx={{fontSize:'30px', marginRight:3}}>
+                  <ContentPasteOffIcon fontSize="inherit" />
+              </IconButton>
+              <Stack>
+                <Typography  variant='base2' sx={{fontWeight:'bold'}}>Free cancellation before 2 weeks of rent</Typography>
+                
+              </Stack>
+          </Stack>
+        </TabPanel>
+
+        <TabPanel value="2">
+        <Box
+      sx={{
+        display: 'flex',
+        flexWrap: 'wrap',
+        '& > :not(style)': {
+          m: 1,
+          width: '100%',
+          height: '300px',
+            },
+          }}
+        >
+          <Paper elevation={3} sx={{display:'flex', alignItems:'center', justifyContent:'center'}}><Typography>This is the frame for the map</Typography></Paper>
+        </Box>
+        </TabPanel>
+        
+      </TabContext>
+    </Stack>
+      
+ 
     </Stack>
     </div>
   )
